@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dinky.mapper.HistoryMapper">
+
+    <select id="selectForProTable" resultType="org.dinky.data.model.job.History">
+        select
+        a.*,
+        (select b.name FROM dinky_cluster b where b.id=a.cluster_id) as clusterName,
+        (select c.name FROM dinky_task c where c.id=a.task_id) as jobName
+        from
+        dinky_history a
+        <where>
+            1=1 and a.task_id = #{param.taskId}
+            <if test='param.jobId!=null and param.jobId!=""'>
+                and a.job_id = #{param.jobId}
+            </if>
+            <if test='param.jobName!=null and param.jobName!=""'>
+                and a.job_name like "%${param.jobName}%"
+            </if>
+            <if test='param.clusterId!=null and param.clusterId!=""'>
+                and a.cluster_id = #{param.clusterId}
+            </if>
+            <if test='param.status!=null and param.status!=""'>
+                and a.status = #{param.status}
+            </if>
+            <if test='param.startTime!=null and param.startTime!=""'>
+                and a.start_time <![CDATA[>=]]> str_to_date( #{param.startTime[0]},'%Y-%m-%d %H:%i:%s')
+                and a.start_time <![CDATA[<=]]> str_to_date( #{param.startTime[1]},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='param.endTime!=null and param.endTime!=""'>
+                and a.end_time <![CDATA[>=]]> str_to_date( #{param.endTime[0]},'%Y-%m-%d %H:%i:%s')
+                and a.end_time <![CDATA[<=]]> str_to_date( #{param.endTime[1]},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!="" and !ew.sqlSegment.startsWith(" ORDER BY")'>
+                and
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!=""'>
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+</mapper>

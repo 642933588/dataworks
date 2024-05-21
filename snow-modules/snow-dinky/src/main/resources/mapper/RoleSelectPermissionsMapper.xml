@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dinky.mapper.RowPermissionsMapper">
+    <select id="selectForProTable" resultType="org.dinky.data.model.rbac.RowPermissions">
+        select
+        a.*,
+        b.role_code,
+        b.role_name
+        from
+        dinky_row_permissions a
+        join dinky_role b on b.id = a.role_id
+        <where>
+            1=1
+            <if test='param.roleCode!=null and param.roleCode!=""'>
+                and b.role_code like "%${param.roleCode}%"
+            </if>
+            <if test='param.roleName!=null and param.roleName!=""'>
+                and b.role_name like "%${param.roleName}%"
+            </if>
+            <if test='param.tableName!=null and param.tableName!=""'>
+                and a.table_name like "%${param.tableName}%"
+            </if>
+            <if test='param.expression!=null and param.expression!=""'>
+                and a.expression like "%${param.expression}%"
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!="" and !ew.sqlSegment.startsWith(" ORDER BY")'>
+                and
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!=""'>
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByRoleIds" parameterType="java.util.List">
+        DELETE FROM dinky_row_permissions
+        WHERE role_id IN
+        <foreach collection="roleIds" item="item" open="(" separator="," close=")">
+            ${item}
+        </foreach>
+    </delete>
+
+    <select id="listRoleSelectPermissionsByRoleIds" resultType="org.dinky.data.model.rbac.RowPermissions">
+        select
+        a.*,
+        b.role_code,
+        b.role_name
+        from
+        dinky_row_permissions a, dinky_role b
+        WHERE
+        b.id = a.role_id
+        and a.role_id IN
+        <foreach collection="roleIds" item="item" open="(" separator="," close=")">
+            ${item}
+        </foreach>
+        order by a.id asc
+    </select>
+</mapper>

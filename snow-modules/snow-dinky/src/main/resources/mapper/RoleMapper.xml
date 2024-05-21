@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dinky.mapper.RoleMapper">
+    <resultMap id="roleResultMap" type="org.dinky.data.model.rbac.Role">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="tenant_id"/>
+        <result property="roleCode" column="role_code"/>
+        <result property="roleName" column="role_name"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="note" column="note"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+
+    </resultMap>
+
+    <sql id="role">
+        select dr.id
+             , dr.tenant_id
+             , dr.role_code
+             , dr.role_name
+             , dr.note
+             , dr.create_time
+             , dr.update_time
+        from dinky_role dr
+
+    </sql>
+    <select id="selectForProTable" resultType="org.dinky.data.model.rbac.Role">
+        select
+            a.*
+        from dinky_role a
+        <where>
+            1=1
+            <if test='param.tenantId!=null and param.tenantId!=""'>
+                and tenant_id = '${param.tenantId}'
+            </if>
+            <if test='param.roleCode!=null and param.roleCode!=""'>
+                and role_code = '${param.roleCode}'
+            </if>
+            <if test='param.roleName!=null and param.roleName!=""'>
+                and role_name like "%${param.roleName}%"
+            </if>
+            <if test='param.createTime!=null and param.createTime!=""'>
+                and create_time <![CDATA[>=]]> str_to_date( #{param.createTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='param.updateTime!=null and param.updateTime!=""'>
+                and update_time <![CDATA[>=]]> str_to_date( #{param.updateTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!="" and !ew.sqlSegment.startsWith(" ORDER BY")'>
+                and
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!=""'>
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoleByIds" resultType="org.dinky.data.model.rbac.Role">
+        select id
+        ,tenant_id
+        ,role_code
+        ,role_name
+        ,is_delete
+        ,note
+        ,create_time
+        ,update_time
+        from dinky_role
+        where id in
+        <foreach collection="roleIds" item="id" separator="," open="(" close=")" index="">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="getRoleByTenantIdAndIds" resultType="org.dinky.data.model.rbac.Role">
+        select id
+        ,tenant_id
+        ,role_code
+        ,role_name
+        ,is_delete
+        ,note
+        ,create_time
+        ,update_time
+        from dinky_role
+        <where>
+            1=1
+            <if test='tenantId!=null and tenantId!=""'>
+                and tenant_id = '${tenantId}'
+            </if>
+            and id in
+            <foreach collection="roleIds" item="id" separator="," open="(" close=")" index="">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="selectRolePermissionByUserId" parameterType="Integer" resultMap="roleResultMap">
+        select distinct r.id, r.tenant_id, r.role_name, r.role_code, r.is_delete, r.note
+        from dinky_role r
+                 left join dinky_user_role urole on urole.role_id = r.id
+                 left join dinky_user u on u.id = urole.user_id
+        WHERE r.is_delete = 0 and ur.user_id = #{userId}
+    </select>
+
+    <select id="selectRoleListByUserId" parameterType="Integer" resultType="Integer">
+        select role_id from dinky_user_role where user_id = #{userId}
+    </select>
+</mapper>

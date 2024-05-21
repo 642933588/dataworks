@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dinky.mapper.UserMapper">
+
+    <select id="selectForProTable" resultType="org.dinky.data.model.rbac.User">
+        select
+        a.*
+        from
+        dinky_user a
+        <where>
+            1=1
+            <if test='param.username!=null and param.username!=""'>
+                and a.username like "%${param.username}%"
+            </if>
+            <if test='param.nickname!=null and param.nickname!=""'>
+                and a.nickname like "%${param.nickname}%"
+            </if>
+            <if test='param.createTime!=null and param.createTime!=""'>
+                and a.create_time <![CDATA[>=]]> str_to_date( #{param.createTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='param.updateTime!=null and param.updateTime!=""'>
+                and a.update_time <![CDATA[>=]]> str_to_date( #{param.updateTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!="" and !ew.sqlSegment.startsWith(" ORDER BY")'>
+                and
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!=""'>
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAdminUserByTenant" resultType="java.lang.Integer">
+        select
+         count(*)
+        from dinky_user_tenant a
+        join dinky_user du on a.user_id = du.id
+        join dinky_tenant c on a.tenant_id = c.id
+        <where>
+            1=1 and du.tenant_admin_flag = 1
+            <if test='tenantId!=null and tenantId!=""'>
+                and a.tenant_id = #{tenantId}
+            </if>
+        </where>
+    </select>
+
+<!--    recoveryUser -->
+    <update id="recoveryUser" parameterType="java.lang.Integer" >
+        update dinky_user set is_delete = 0 where id = #{id}
+    </update>
+
+</mapper>
