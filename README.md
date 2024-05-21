@@ -10,8 +10,6 @@
 * 扩展性强：支持插件和自定义脚本，用户可以根据需求扩展功能。
 
 
-
-
 ## 演示图
 ![0](https://github.com/642933588/dataworks/assets/10755257/6681dcb9-3720-4762-9a77-76ee755689f9)
 ![1](https://github.com/642933588/dataworks/assets/10755257/66babc9c-62e1-4172-a8e2-6ac9e5601dca)
@@ -20,3 +18,13 @@
 ![4](https://github.com/642933588/dataworks/assets/10755257/1402d2d3-9596-4d82-845c-56437b7e2ebe)
 ![5](https://github.com/642933588/dataworks/assets/10755257/ca3de54f-15e9-4456-a912-fea4bffd3dfb)
 ![6](https://github.com/642933588/dataworks/assets/10755257/dcd75753-4e86-4da1-bed3-ba6e9b7b46ad)
+
+## 联系我们
+如果你有任何问题或建议，请通过以下方式联系我们：
+- 邮箱: 642933588@qq.com
+
+## 捐赠
+如果项目帮助到您 可以考虑请作者喝杯咖啡 万分感谢您对开源的支持!（所有捐赠将被用于部署演示环境）
+![image](https://github.com/642933588/dataworks/assets/10755257/f37207b6-1c6d-44f1-99c3-6c8743065fd4)
+
+
