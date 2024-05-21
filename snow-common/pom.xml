@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.snow</groupId>
+        <artifactId>snow</artifactId>
+        <version>3.6.4</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>snow-common-log</module>
+        <module>snow-common-core</module>
+        <module>snow-common-redis</module>
+        <module>snow-common-seata</module>
+        <module>snow-common-swagger</module>
+        <module>snow-common-security</module>
+        <module>snow-common-sensitive</module>
+        <module>snow-common-datascope</module>
+        <module>snow-common-datasource</module>
+        <module>snow-common-translation</module>
+    </modules>
+
+    <artifactId>snow-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        snow-common通用模块
+    </description>
+
+</project>

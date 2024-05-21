@@ -1,0 +1,2 @@
+com.snow.common.translation.config.TranslationConfig
+com.snow.common.translation.core.impl.UserNameTranslationImpl

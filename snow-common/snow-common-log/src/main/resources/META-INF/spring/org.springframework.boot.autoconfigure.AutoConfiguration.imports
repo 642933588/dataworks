@@ -1,0 +1,2 @@
+com.snow.common.log.service.AsyncLogService
+com.snow.common.log.aspect.LogAspect
