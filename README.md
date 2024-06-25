@@ -150,6 +150,23 @@
 ![7](https://github.com/642933588/dataworks/assets/10755257/e818dab4-379b-4c03-83c5-059026b253cb)
 ![8](https://github.com/642933588/dataworks/assets/10755257/442d9993-ff2f-485c-9cc6-9b171ac5dd90)
 
+#### 数据资产
+![0-1](https://github.com/642933588/dataworks/assets/10755257/5bac1d76-ef6f-45c0-9e79-be0f3ff38bec)
+![0-2](https://github.com/642933588/dataworks/assets/10755257/78343571-750b-45c9-90bd-e76eedd1dcc3)
+![1-1](https://github.com/642933588/dataworks/assets/10755257/47ce1e4a-21e4-4c21-a110-8ca8d69b908c)
+![1-2](https://github.com/642933588/dataworks/assets/10755257/bb736cf5-f1b8-4afc-8e2a-0efe19309761)
+![1-3](https://github.com/642933588/dataworks/assets/10755257/8fb5614a-5807-4726-b674-ea10567ca6fc)
+![1-4](https://github.com/642933588/dataworks/assets/10755257/53155fb6-6273-414e-bbc2-8503bd79c88d)
+![1-5](https://github.com/642933588/dataworks/assets/10755257/757aec0f-67eb-4471-8fd0-4f5a16399a41)
+![1-6](https://github.com/642933588/dataworks/assets/10755257/ac099e7e-ca4f-4051-a61a-1973142ea3b8)
+![1-7](https://github.com/642933588/dataworks/assets/10755257/b5d268de-fb09-4c54-9e49-146540cf1b5a)
+![3-1](https://github.com/642933588/dataworks/assets/10755257/544b7a0c-b0e1-43ce-9d0e-619ba6dc9967)
+![4-1](https://github.com/642933588/dataworks/assets/10755257/4861963d-bbff-4a9e-a332-d5efebebf87d)
+![5-1](https://github.com/642933588/dataworks/assets/10755257/45ecc8c5-3170-4fd0-b4e0-e807350cbb41)
+![6-1](https://github.com/642933588/dataworks/assets/10755257/15cfa63a-730a-4c1e-80bd-3f27a78a643f)
+![9-1](https://github.com/642933588/dataworks/assets/10755257/81f52c8a-0793-49a7-a935-388dd467f19c)
+![9-2](https://github.com/642933588/dataworks/assets/10755257/375e8ab1-0748-4e8f-b015-cf2e83a8abc9)
+
 ## 贡献指南
 
 我们欢迎任何形式的贡献！如果你有好的建议或发现了问题，请提交一个 Issue 或 Pull Request。
