@@ -10,7 +10,7 @@
   - [元数据管理 (OpenMetadata)](#元数据管理-openmetadata)
   - [实时数据处理 (Dinky)](#实时数据处理-dinky)
   - [数据集成（FlinkCDC）](#数据集成)
-  - [数据查询（dataq）](#数据查询)
+  - [数据查询（Dataq）](#数据查询)
   - [数据分析（DataAnalysis）](#数据分析)
   - [数据服务（Dataservice）](#数据服务)
 - [架构](#架构)
