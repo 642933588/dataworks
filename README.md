@@ -195,12 +195,8 @@
 
 ## 联系我们
 
-- 邮箱: 642933588@qq.com（qq同号）
-- 加V请注明来意：smallfortheuniverse
-
-![WechatIMG182](https://github.com/user-attachments/assets/db0fa36a-9478-49e4-8e15-07b22a8ae376)
-
-![image](https://github.com/642933588/jiron-cloud/assets/10755257/146fa604-986a-4202-ba27-fa7842eb9a20)
+- 邮箱: 810021796@qq.com（qq同号）
+- 加V请注明来意：F810021796
 
 ## 
 
